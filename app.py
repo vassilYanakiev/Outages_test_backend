@@ -8,9 +8,9 @@ from flappings import flapping_alarms
 app = Flask(__name__)
 CORS(app)
 cors = CORS(app, resources={
-    r"/*":{
-        "origins":"*"
-    }"
+    r"/*": {
+        "origins": "*"
+    }
 
 })
 
