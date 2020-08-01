@@ -19,13 +19,13 @@ def flapping_alarms(list_full):
     list_flappings = []
     for alarm_id, alarm_list_of_tuples in dict_unique_alarms.items():
         alarm_list_of_tuples.sort(key=lambda x: x[0])
-        print( alarm_list_of_tuples)
-        print('#############')
+        # print( alarm_list_of_tuples)
+        # print('#############')
 
         # check flapping for each tupple (start, duration)
         for ind, alarm_instance in enumerate(alarm_list_of_tuples):
-            print(alarm_instance[0])
-            print('------------')
+            #print(alarm_instance[0])
+            #print('------------')
             time_prev_start = 0
             accum_time = 0
             duration = 0
@@ -106,9 +106,9 @@ def flapping_alarms(list_full):
                         time_prev_start = alarm_list_of_tuples[ind_back][0]
                         flapping_ocurrences += 1
                     ind_back -= 1
-                    print('is2')
+                    #print('is2')
 
-                print(accum_time, flapping_ocurrences)
+                #print(accum_time, flapping_ocurrences)
                 if accum_time > 15:
                     if 0:
                         # check 3 - less time, but more occurrences exist?
