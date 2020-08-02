@@ -73,5 +73,5 @@ def get_recent_outages(time_back):
   return jsonify(recent_outages)
 
 
-if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+
+app.run(port=5000, debug=True)
