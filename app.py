@@ -19,7 +19,7 @@ with open('./data.json', 'r') as myfile:
 
 
 outages = json.loads(data)
-app = Flask(__name__)
+
 
 
 
@@ -31,7 +31,7 @@ def home():
 @app.route('/flappings')
 def get_flappings():
     #return outages
-  return jsonify({'flappings': flapping_alarms(outages)})
+  return jsonify(flapping_alarms(outages))
   #pass
 
 
@@ -39,7 +39,7 @@ def get_flappings():
 @app.route('/outages')
 def get_outages():
 
-  return jsonify({'outages': outages})
+  return jsonify(outages)
 
 
 #post /outages data: {name :}
@@ -65,7 +65,7 @@ def get_current_outages():
       date_time_obj_end = date_time_obj_start + timedelta(minutes=outage['duration'])
       if date_time_obj_start < now and date_time_obj_end > now :
           current_outages.append(outage)
-  return jsonify({'current': current_outages})
+  return jsonify(current_outages)
 
 @app.route('/outages/recent:<int:time_back>')
 def get_recent_outages(time_back):
@@ -76,6 +76,8 @@ def get_recent_outages(time_back):
       if date_time_obj < now and date_time_obj>now - timedelta(minutes=time_back):
           recent_outages.append(outage)
 
-  return jsonify({'recent': recent_outages})
+  return jsonify(recent_outages)
 
-app.run(port=5000)
+
+if __name__ == '__main__':
+    app.run(port=5000)
