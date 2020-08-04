@@ -1,15 +1,14 @@
 from flask import Flask,jsonify,request,render_template
 from datetime import datetime,timedelta
-from flask_cors import CORS
-import json
+#import json
 
 from flappings import flapping_alarms
 
 app = Flask(__name__)
 
 
-CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+#CORS(app)
+#app.config['CORS_HEADERS'] = 'Content-Type'
 with open('./data.json', 'r') as myfile:
     data = myfile.read()
 
