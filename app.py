@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 CORS(app)
-
+app.config['CORS_HEADERS'] = 'Content-Type'
 with open('./data.json', 'r') as myfile:
     data = myfile.read()
 
