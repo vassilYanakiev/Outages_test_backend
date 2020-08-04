@@ -1,12 +1,18 @@
 from flask import Flask,jsonify,request,render_template
 from datetime import datetime,timedelta
-#from flask_cors import CORS
+from flask_cors import CORS
 import json
 
 from flappings import flapping_alarms
 
 app = Flask(__name__)
+CORS(app)
+cors = CORS(app, resources={
+    r"/*": {
+        "origins": "*"
+    }
 
+})
 
 with open('./data.json', 'r') as myfile:
     data = myfile.read()
@@ -46,7 +52,7 @@ def create_store():
     'startTime':request_data['startTime']
   }
   outages.append(new_outage)
-  return jsonify(new_outage)
+  return 'Done', 201
 
 
 #get /outages/current

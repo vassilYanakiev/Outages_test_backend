@@ -56,7 +56,6 @@ def flapping_alarms(list_full):
                     duration += alarm_list_of_tuples[ind_back][1]
                     if date_time_prev_end > date_time_current_start - timedelta(minutes=120):
                         accum_time += (date_time_prev_end - (date_time_current_start-timedelta(minutes=120))).seconds/60
-
                         flapping_ocurrences +=1
                         #print('t')
                         delta = (date_time_prev_end - (date_time_current_start-timedelta(minutes=120)))
@@ -79,10 +78,14 @@ def flapping_alarms(list_full):
                 break
             else:
                 # case2- 2 hours before end of current /maximum time
+                time_prev_start = 0
+                accum_time = 0
+                duration = 0
+                flapping_ocurrences = 1
                 ind_back = ind
                 date_time_prev_start = date_time_current_start
                 date_time_prev_end = date_time_current_end
-                while ind_back >= 0 and (date_time_prev_end > date_time_current_end-timedelta(minutes=120)):
+                while (ind_back >= 0) and (date_time_prev_end > date_time_current_end-timedelta(minutes=120)):
                     date_time_prev_start = datetime.strptime(alarm_list_of_tuples[ind_back][0], '%Y-%m-%d %H:%M:%S')
                     date_time_prev_end = date_time_prev_start + timedelta(minutes=alarm_list_of_tuples[ind_back][1])
                     if date_time_current_start > date_time_prev_start + timedelta(minutes=120):
