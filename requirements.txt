@@ -2,4 +2,3 @@ Flask
 uwsgi
 psycopg2
 datetime
-CORS
