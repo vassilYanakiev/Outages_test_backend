@@ -8,7 +8,7 @@ from flappings import flapping_alarms
 app = Flask(__name__)
 
 
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
 
 with open('./data.json', 'r') as myfile:
     data = myfile.read()
