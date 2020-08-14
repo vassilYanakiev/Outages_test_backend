@@ -29,7 +29,7 @@ def flapping_alarms(list_full):
             time_prev_start = 0
             accum_time = 0
             duration = 0
-            flapping_ocurrences = 1
+            flapping_ocurrences = 0
 
             ind_back = ind - 1
             date_time_current_start = datetime.strptime(alarm_instance[0], '%Y-%m-%d %H:%M:%S')
@@ -75,13 +75,13 @@ def flapping_alarms(list_full):
 
             if accum_time>15:
                 list_flappings.append({'service_id':alarm_id,'start':time_prev_start,'duration':duration,'end': str(date_time_current_end),'amount_outages':flapping_ocurrences,'sum_outages':accum_time})
-                break
+                #break
             else:
                 # case2- 2 hours before end of current /maximum time
                 time_prev_start = 0
                 accum_time = 0
                 duration = 0
-                flapping_ocurrences = 1
+                flapping_ocurrences = 0
                 ind_back = ind
                 date_time_prev_start = date_time_current_start
                 date_time_prev_end = date_time_current_end
@@ -120,7 +120,7 @@ def flapping_alarms(list_full):
                         list_flappings.append({'service_id': alarm_id, 'start': time_prev_start, 'duration': duration,
                                                'end': str(date_time_current_end), 'amount_outages': flapping_ocurrences,
                                                'sum_outages': accum_time})
-                        break
+                        #break
 
 
     return list_flappings

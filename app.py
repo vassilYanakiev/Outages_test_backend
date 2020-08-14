@@ -17,9 +17,7 @@ outages = json.loads(data)
 
 
 
-@app.route('/')
-def home():
-  return render_template('index.html')
+
 
 #get /outages
 @app.route('/flappings')
@@ -37,7 +35,7 @@ def get_outages():
 
 
 #post /outages data: {name :}
-@app.route('/outages' , methods=['POST'])
+@app.route('/outages/add' , methods=['POST'])
 def create_store():
   request_data = request.get_json()
   new_outage = {
@@ -46,6 +44,7 @@ def create_store():
     'startTime':request_data['startTime']
   }
   outages.append(new_outage)
+  print(new_outage)
   return jsonify(new_outage)
 
 
@@ -59,6 +58,7 @@ def get_current_outages():
       date_time_obj_end = date_time_obj_start + timedelta(minutes=outage['duration'])
       if date_time_obj_start < now and date_time_obj_end > now :
           current_outages.append(outage)
+
   return jsonify(current_outages)
 
 @app.route('/outages/recent:<int:time_back>')
