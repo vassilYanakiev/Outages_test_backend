@@ -36,16 +36,17 @@ def get_outages():
 
 #post /outages data: {name :}
 @app.route('/outages/add' , methods=['POST'])
-def create_store():
+def add_outage():
   request_data = request.get_json()
+  print(request_data)
   new_outage = {
     'service_id':request_data['service_id'],
     'duration':request_data['duration'],
     'startTime':request_data['startTime']
   }
   outages.append(new_outage)
-  print(new_outage)
-  return jsonify(new_outage)
+
+  #return 'Done', 201
 
 
 #get /outages/current
