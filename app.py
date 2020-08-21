@@ -46,6 +46,7 @@ def add_outage():
   }
   outages.append(new_outage)
 
+return 
   #return 'Done', 201
 
 
