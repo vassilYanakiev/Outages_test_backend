@@ -35,7 +35,7 @@ def get_outages():
 
 
 #post /outages data: {name :}
-@app.route('/outages/add' , methods=['POST'])
+@app.route('/outages/add' , methods=['POST','OPTIONS'])
 def add_outage():
   request_data = request.get_json()
   print(request_data)
