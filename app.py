@@ -1,5 +1,5 @@
 from flask import Flask,jsonify,request,render_template
-from flask_cors import CORS
+
 from datetime import datetime,timedelta
 #from flask_cors import CORS
 import json
@@ -7,7 +7,7 @@ import json
 from flappings import flapping_alarms
 
 app = Flask(__name__)
-CORS(app)
+
 
 with open('./data.json', 'r') as myfile:
     data = myfile.read()
